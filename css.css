@@ -1,0 +1,96 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4; /* Light background for contrast */
+    color: #333;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2em;
+}
+
+.content-container {
+    width: 80%; /* Takes up 80% of the page width */
+    max-width: 800px; /* Max width to prevent it from getting too wide on large screens */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+}
+
+.content-box {
+    border: 2px solid #555; /* The border represents the boxes in your sketch */
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center; /* Center content like in your sketch */
+    min-height: 150px; /* Give the boxes some height */
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.content-box img {
+    width: 80%;          /* or any % or px value */
+    height: auto;        /* keeps aspect ratio */
+    max-width: 400px;    /* optional */
+}
+
+/* Styling for the specific boxes based on your sketch content */
+#image-box {
+    /* This box is for the IMG placeholder */
+    margin-bottom: 40px; /* Extra space below the top box, like on the paper */
+}
+
+#lry-box {
+    /* This box is for the LRY placeholder */
+}
+
+.placeholder-text {
+    font-size: 3em;
+    color: #999;
+    line-height: 150px; /* Vertically center the text within the box's min-height */
+    margin: 0;
+}
+
+/* Additions for the Carousel */
+.carousel-container {
+    position: relative;
+    max-width: 100%; /* Ensures it fits within the parent .content-box */
+    overflow: hidden; /* Important: Hides images that are off-screen */
+}
+
+.carousel-slide {
+    display: none; /* Hide all slides by default */
+}
+
+.carousel-slide.active {
+    display: block; /* Only show the slide with the 'active' class */
+}
+
+.carousel-slide img {
+    width: 100%; /* Image fills the container */
+    height: 250px;
+    max-height: 600px; /* Optional: Limit height for better screen fit */
+    object-fit: cover; /* Ensures image covers area without distortion/squishing */
+}
+
+/* Navigation Buttons Styling */
+.prev-button, .next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
