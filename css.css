@@ -1,8 +1,17 @@
+:root {
+    --bg: #fafafa;
+    --surface: #A3D5FF; /* boxes and surfaces */
+    --text: #4a4a4a;
+    --muted: #bfbfbf;
+    --primary: #e0e0e0;
+    --border: #555;
+}
+
 body {
     font-family: sans-serif;
-    margin: 20px;
-    background-color: #f4f4f4; /* Light background for contrast */
-    color: #333;
+    margin: 5px;
+    background-color: var(--bg); /* Light background for contrast */
+    color: var(--text);
 }
 
 header {
@@ -13,7 +22,7 @@ header {
 }
 
 h1 {
-    color: #2c3e50;
+    color: #4a4a4a;
     font-size: 2em;
 }
 
@@ -21,17 +30,18 @@ h1 {
     width: 80%; /* Takes up 80% of the page width */
     max-width: 800px; /* Max width to prevent it from getting too wide on large screens */
     margin: 0 auto; /* Center the container */
-    padding: 20px;
+    padding: 5px;
 }
 
 .content-box {
     border: 2px solid #555; /* The border represents the boxes in your sketch */
     padding: 20px;
-    margin-bottom: 20px;
     text-align: center; /* Center content like in your sketch */
     min-height: 150px; /* Give the boxes some height */
-    background-color: white;
+    background-color: var(--surface);
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
 }
 
 .content-box img {
@@ -40,20 +50,114 @@ h1 {
     max-width: 400px;    /* optional */
 }
 
+/* Projects grid: two columns layout */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 700px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* single column on small screens */
+    }
+}
+
+.project-card {
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 4px 6px 18px rgba(0,0,0,0.12);
+}
+.card-media img {
+    width: 100%;
+    height: 200px;     /* smaller height than the current 180px */
+    object-fit: cover; /* keeps crop/fit consistent */
+}
+.card-excerpt {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Modal overlay */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none; /* toggled by JS */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 2000;
+}
+.modal-overlay[aria-hidden="false"] {
+    display: flex;
+}
+.modal-window {
+    background: white;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow: auto;
+    border-radius: 8px;
+    padding: 18px;
+    position: relative;
+}
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.modal-content img {
+    width: 100%;
+    max-height: 50vh;   /* half the viewport height */
+    object-fit: contain; /* show whole image, no cropping */
+    display: block;
+    margin-bottom: 12px;
+}
+
+/* Make modal images smaller and ensure modal carousels don't use page carousel height */
+.modal-content img {
+    max-height: 100vh; /* reduce modal image height (change as needed) */
+    max-width: 90%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-overlay .carousel-slide img {
+    /* override page carousel fixed height inside modal */
+    height: auto;
+    max-height: 60vh;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Modal detail text (only in the popup) */
+.modal-detail {
+    margin-top: 12px;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
 /* Styling for the specific boxes based on your sketch content */
 #image-box {
     /* This box is for the IMG placeholder */
     margin-bottom: 40px; /* Extra space below the top box, like on the paper */
 }
 
-#lry-box {
-    /* This box is for the LRY placeholder */
-}
-
 .placeholder-text {
-    font-size: 3em;
-    color: #999;
-    line-height: 150px; /* Vertically center the text within the box's min-height */
+    font-size: 12pt;
+    color: #e0e0e0;
+    line-height: 25px; /* Vertically center the text within the box's min-height */
     margin: 0;
 }
 
@@ -74,7 +178,7 @@ h1 {
 
 .carousel-slide img {
     width: 100%; /* Image fills the container */
-    height: 250px;
+    height: 500px;
     max-height: 600px; /* Optional: Limit height for better screen fit */
     object-fit: cover; /* Ensures image covers area without distortion/squishing */
 }
@@ -84,10 +188,17 @@ h1 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.55);
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 16px; /* slightly larger hit area */
+    cursor: pointer;
+    font-size: 1.1rem;
+    z-index: 10; /* ensure buttons sit above images */
+    border-radius: 4px;
+}
+
+.prev-button {
     left: 10px;
 }
 
