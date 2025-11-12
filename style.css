@@ -76,6 +76,25 @@ h1 {
     height: 200px;     /* smaller height than the current 180px */
     object-fit: cover; /* keeps crop/fit consistent */
 }
+
+/* Shrink only the image inside the MaxTac project card (keeps aspect ratio and centers it) */
+#project1-box .card-media img {
+    width: 240px;      /* smaller thumbnail width */
+    max-width: 100%;   /* stay responsive on small screens */
+    height: auto;      /* preserve aspect ratio */
+    object-fit: contain; /* show whole image, no cropping */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Ensure the thumbnail is responsive on narrow viewports */
+@media (max-width: 480px) {
+    #project1-box .card-media img {
+        width: 100%;
+        max-width: 320px; /* optional cap so it doesn't become too large on mid-width screens */
+    }
+}
 .card-excerpt {
     color: #555;
     font-size: 0.95rem;
