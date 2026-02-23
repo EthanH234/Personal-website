@@ -1,10 +1,20 @@
+header h1, header p {
+    text-align: left;
+    margin-left: 15px;
+}
+.no-box {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: block !important;
+}
 :root {
     --bg: #fafafa;
     --surface: #A3D5FF; /* boxes and surfaces */
-    --text: #4a4a4a;
-    --muted: #bfbfbf;
+    --text: #fff;
+    --muted: #e0e0e0;
     --primary: #e0e0e0;
-    --border: #555;
+    --border: #e0e0e0;
 }
 
 body {
@@ -12,17 +22,11 @@ body {
     margin: 5px;
     background-color: var(--bg); /* Light background for contrast */
     color: var(--text);
-}
-
-header {
-    text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 10px;
+    background-color: #000;
 }
 
 h1 {
-    color: #4a4a4a;
+    color: #FFFFFF;
     font-size: 2em;
 }
 
@@ -33,24 +37,39 @@ h1 {
     padding: 5px;
 }
 
+.second_headers {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: var(--muted);
+}
+
 .content-box {
-    border: 2px solid #555; /* The border represents the boxes in your sketch */
     padding: 20px;
-    text-align: center; /* Center content like in your sketch */
-    min-height: 150px; /* Give the boxes some height */
-    background-color: var(--surface);
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
-    display: grid;
-    grid-template-columns: 1fr, 1fr;
+    text-align: center;
+    min-height: 150px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    display: block;
+    color: #FFFFFF;
 }
 
-.content-box img {
-    width: 80%;          /* or any % or px value */
-    height: auto;        /* keeps aspect ratio */
-    max-width: 400px;    /* optional */
+#image-box {
+    width: 100%;
+    margin: 0 auto 40px auto;
+    padding: 0;
+}
+#image-box img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 0 auto;
 }
 
-/* Projects grid: two columns layout */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -66,6 +85,11 @@ h1 {
 .project-card {
     cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: 2px solid #555;
+    background: #4245e4;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.08);
+    border-radius: 8px; /* optional, for rounded corners */
+    padding: 20px;      /* ensure content isn't flush with the border */
 }
 .project-card:hover {
     transform: translateY(-4px);
@@ -96,7 +120,7 @@ h1 {
     }
 }
 .card-excerpt {
-    color: #555;
+    color: #FFFFFF;
     font-size: 0.95rem;
 }
 
@@ -162,7 +186,7 @@ h1 {
 /* Modal detail text (only in the popup) */
 .modal-detail {
     margin-top: 12px;
-    color: #333;
+    color: #000000;
     font-size: 1rem;
     line-height: 1.5;
 }
@@ -174,10 +198,13 @@ h1 {
 }
 
 .placeholder-text {
+    text-align: center;
     font-size: 12pt;
-    color: #e0e0e0;
-    line-height: 25px; /* Vertically center the text within the box's min-height */
+    color: #FFFFFF;
+    line-height: 25px;
     margin: 0;
+    text-align: left;
+    margin-bottom: 42px; /* Adjust value as needed */
 }
 
 /* Additions for the Carousel */
@@ -223,4 +250,98 @@ h1 {
 
 .next-button {
     right: 10px;
+}
+
+nav {
+    font-size: 1.2rem;
+    padding: 18px 0 14px 0;
+    margin-bottom: 18px;
+    margin-top: 8px;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+}
+
+nav a {
+    font-size: 1.1rem;
+    margin: 0 18px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: 0.2s;
+    display: inline-block;
+    color: #fff;
+}
+nav a:hover, nav a:focus {
+    background: #afaeae;
+    text-decoration: underline;
+}
+
+a {
+    color:#a7a6a6
+}
+.project-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.project-img {
+  width: 50%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  float: right;
+}
+.project-text {
+  width: 50%;
+  min-width: 250px;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+@media (max-width: 700px) {
+  .project-panel {
+    flex-direction: column;
+  }
+  .project-img, .project-text {
+    width: 100%;
+  }
+}
+
+.data-images {
+  width: 120px;
+  height: auto;
+  float: left;              /* Key */
+  margin: 0 16px 16px 0;    /* Space between image & text */
+}
+
+.email-top-right {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    color: #fff;
+    font-size: 1.05rem;
+    background: rgba(0,0,0,0.7);
+    padding: 6px 14px;
+    border-radius: 6px;
+    z-index: 100;
+}
+header {
+    position: relative;
+}
+
+.email-top-right {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    color: #fff;
+    font-size: 1.05rem;
+    background: rgba(0,0,0,0.7);
+    padding: 6px 14px;
+    border-radius: 6px;
+    z-index: 100;
+}
+
+.cert-image {
+    width: 500px;
+    height: auto;
+    margin: 20px;
 }
