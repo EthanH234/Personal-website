@@ -135,25 +135,4 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Escape') closeModal();
         });
 
-          // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDW4vpoDSear-BwokXzb9jo3fq_Yt7wjIQ",
-    authDomain: "mainsitestorage-cd233.firebaseapp.com",
-    projectId: "mainsitestorage-cd233",
-    storageBucket: "mainsitestorage-cd233.firebasestorage.app",
-    messagingSenderId: "395176296428",
-    appId: "1:395176296428:web:861001a2b47f75c4e78ac9",
-    measurementId: "G-CPY3KGYYW9"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
 });
